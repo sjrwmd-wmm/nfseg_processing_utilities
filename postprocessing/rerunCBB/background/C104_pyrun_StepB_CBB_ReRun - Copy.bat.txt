@@ -1,0 +1,20 @@
+C:\Python27\ArcGIS10.4\python.exe bin\b1__SetupReRun_files.py %CD%
+cd rerunCBB
+cd water_budget_rerun
+..\bin\mfnwt_jd.exe < mfnwt_nfseg_all_to_cbc.in
+..\bin\cbb_cfd.nfseg.exe < ..\bin\cbb_cfd.nfseg.in
+..\bin\nfseg.springflow.exe
+..\bin\cbb_table.nfseg.exe < ..\bin\cbb_table.nfseg.in
+start excel %CD%\NFSEG_2001_WaterBudgetAnalysis.xlsm
+start excel %CD%\NFSEG_2009_WaterBudgetAnalysis.xlsm
+
+
+
+
+
+
+
+
+
+
+
