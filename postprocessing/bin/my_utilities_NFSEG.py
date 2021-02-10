@@ -42,7 +42,7 @@ class ReferenceDefinitions:
         # Set the Arc GIS file format version number
         # NOTE: Choices are:
         #       ['8.3', '9.0', '9.2', '9.3', '10.0', '10.1', '10.3']
-        self.ArcCFileVersion = '10.3' #'9.0'
+        self.ArcCFileVersion = '10.0' #'9.0'
         
 # ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
