@@ -13,7 +13,7 @@ ECHO PROCESSING STEP A
 
 ECHO PROCESSING STEP B
 
-%PYCOM% %PYTHONBINDIR%\b1__SetupReRun_files_2.0.py %CD%
+%PYCOM% %PYTHONBINDIR%\b1__SetupReRun_files_2.0.py ..\..\rerunCBB\background\water_budget
 cd rerunCBB
 cd water_budget_rerun
 %RERUNCBBDIR%\mfnwt_jd.exe < mfnwt_nfseg_all_to_cbc.in

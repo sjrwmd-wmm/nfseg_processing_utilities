@@ -14,14 +14,7 @@ sys.path.insert(0,BIN_DIR)
 import my_utilities_NFSEG as myut
 
 
-
-def is_number(s):
-    try:
-        float(s)
-        return True
-    except ValueError:
-        return False
-
+reffile_dir = sys.argv[1]
 
 # Get the working PATHs
 cpath_py, cpath_py_upper, cpath_py_base = myut.get_current_PATHs()
@@ -54,8 +47,27 @@ else:
 if os.path.isdir(cpath_py+'/rerunCBB/water_budget_rerun') is True:
     print ("rerun folder already created - files will be overwritten")
 else:
-    os.mkdir(cpath_py+'/rerunCBB/water_budget_rerun')
+    if os.path.isdir(cpath_py+'/rerunCBB') is True:
+        os.mkdir(cpath_py+'/rerunCBB/water_budget_rerun')
+    else:
+        os.mkdir(cpath_py+'/rerunCBB')
+        os.mkdir(cpath_py+'/rerunCBB/water_budget_rerun')
 dir_rerun = cpath_py+'/rerunCBB/water_budget_rerun'
+
+# Copy files over that are needed to run the Water Budget executables
+filecopylist = ['mfnwt_nfseg_all_to_cbc.in',
+                'nfseg.springs.csv',
+                'NFSEG_2001_WaterBudgetAnalysis.xlsm',
+                'NFSEG_2009_WaterBudgetAnalysis.xlsm',
+                'nfseg_all_to_cbc.chd',
+                'nfseg_all_to_cbc.nam',
+                'nfseg_all_to_cbc.nwt',
+                'nfseg_all_to_cbc.oc',
+                'nfseg_all_to_cbc_sh.hds']
+for f in filecopylist:
+    shutil.copy2(os.path.join(reffile_dir,f), os.path.join(dir_rerun,f))
+#
+
 
 #Step 2a - part one from active simulation
 #copy files from latest simulation folder into water_budget subfolder - No name change
