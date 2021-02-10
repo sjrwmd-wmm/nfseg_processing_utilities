@@ -20,8 +20,8 @@ cd water_budget_rerun
 %RERUNCBBDIR%\cbb_cfd.nfseg.exe < %RERUNCBBDIR%\cbb_cfd.nfseg.in
 %RERUNCBBDIR%\nfseg.springflow.exe
 %RERUNCBBDIR%\cbb_table.nfseg.exe < %RERUNCBBDIR%\cbb_table.nfseg.in
-start excel %CD%\NFSEG_2001_WaterBudgetAnalysis.xlsm
-start excel %CD%\NFSEG_2009_WaterBudgetAnalysis.xlsm
+start excel NFSEG_2001_WaterBudgetAnalysis.xlsm
+start excel NFSEG_2009_WaterBudgetAnalysis.xlsm
 cd..
 cd..
 
