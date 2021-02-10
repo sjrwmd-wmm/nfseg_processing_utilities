@@ -11,7 +11,7 @@ ECHO PROCESSING STEP A
 
 ECHO PROCESSING STEP B
 
-%PYCOM% bin\b1__SetupReRun_files.py %CD%
+%PYCOM% bin\b1__SetupReRun_files_2.0.py %CD%
 cd rerunCBB
 cd water_budget_rerun
 ..\bin\mfnwt_jd.exe < mfnwt_nfseg_all_to_cbc.in
@@ -25,23 +25,23 @@ cd..
 
 ECHO PROCESSING STEP C
 
-%PYCOM% bin\c1__NFSEG_cbb_fc.py %CD%
-%PYCOM% bin\c1a__cbbpropscalcs.py %CD%
+%PYCOM% bin\c1__NFSEG_cbb_fc_2.0.py %CD%
+%PYCOM% bin\c1a__cbbpropscalcs_2.0.py %CD%
 
 ECHO PROCESSING STEP D
 
-%PYCOM% bin\d1_IBR_mxds2jpeg.py %CD%
-%PYCOM% bin\d2_HSR_mxds2jpeg.py %CD%
-%PYCOM% bin\d3_BCR_mxds2jpeg.py %CD%
-%PYCOM% bin\d4_OGR_mxds2jpeg.py %CD%
-%PYCOM% bin\d5_CPR_mxds2jpeg.py %CD%
-%PYCOM% bin\d6_CRH_mxds2jpeg.py %CD%
-%PYCOM% bin\d7_CRF_mxds2jpeg.py %CD%
-%PYCOM% bin\d8_CRP_mxds2jpeg.py %CD%
+%PYCOM% bin\d1_IBR_mxds2jpeg_2.0.py %CD%
+%PYCOM% bin\d2_HSR_mxds2jpeg_2.0.py %CD%
+%PYCOM% bin\d3_BCR_mxds2jpeg_2.0.py %CD%
+%PYCOM% bin\d4_OGR_mxds2jpeg_2.0.py %CD%
+%PYCOM% bin\d5_CPR_mxds2jpeg_2.0.py %CD%
+%PYCOM% bin\d6_CRH_mxds2jpeg_2.0.py %CD%
+%PYCOM% bin\d7_CRF_mxds2jpeg_2.0.py %CD%
+%PYCOM% bin\d8_CRP_mxds2jpeg_2.0.py %CD%
 
 ECHO PROCESSING STEP E ZONEBUDGET
 
-%PYCOM% bin\e1__NFSEG_Zonebudget.py %CD%
-%PYCOM% bin\e2__NFSEG_Zonebudget_Figures.py %CD%
-%PYCOM% bin\e2b__NFSEG_Zonebudget_Figures_full.py %CD%
+%PYCOM% bin\e1__NFSEG_Zonebudget_2.0.py %CD%
+%PYCOM% bin\e2__NFSEG_Zonebudget_Figures_2.0.py %CD%
+%PYCOM% bin\e2b__NFSEG_Zonebudget_Figures_full_2.0.py %CD%
 
