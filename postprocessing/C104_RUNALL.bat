@@ -1,6 +1,6 @@
 set PYCOM=C:\Python27\ArcGIS10.6\python.exe
 set PYTHONBINDIR=..\..\bin
-set RERUNCBBDIR=..\..\rerunCBB\bin
+set RERUNCBBDIR=..\..\..\..\rerunCBB\bin
 
 ECHO PROCESSING STEP A
 
