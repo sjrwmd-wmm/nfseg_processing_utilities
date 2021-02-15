@@ -36,13 +36,38 @@ print("parent directory: " + str(cpath_py_upper))
 print("grandparent directory: " + str(cpath_py_base))
 
 
-###check for a sub directory called /figures, create it if necessary
-dir_figs=str(cpath_py)+"/figures"
+####check for a sub directory called /figures, create it if necessary
+#dir_figs=str(cpath_py)+"/figures"
+#if os.path.exists(dir_figs) == False:
+#    os.makedirs(dir_figs)
+#else:
+#    print("subdirectory / figures directory already exists - existing files will get overwritten without any further warning")
+##print("root directory for figures output: "+str(dir_XS))
+# Check and Create sub-directories as needed
+#-------------------------------------------
+
+# Sub-directory called /figures
+dir_figs = (str(cpath_py) + "/figures")
 if os.path.exists(dir_figs) == False:
     os.makedirs(dir_figs)
 else:
-    print("subdirectory / figures directory already exists - existing files will get overwritten without any further warning")
+    print('\nWARNING: subdirectory "figures" already exists - \n' +
+          '\t existing files with the same name as those updated ' +
+          'in this script will be overwritten!\n')
+# END IF
 #print("root directory for figures output: "+str(dir_XS))
+
+
+# Sub-directory called /GIS
+dir_GIS = (str(cpath_py) + "/GIS")
+if os.path.exists(dir_GIS) == False:
+    os.makedirs(dir_GIS)
+else:
+    print('\nWARNING: subdirectory "GIS" already exists - \n' +
+          '\t existing files with the same name as those updated ' +
+          'in this script will be overwritten!\n')
+# END IF
+#-------------------------------------------
 
 #find optimal parameters output file (*.pst.txt) - the rest of the files get named with the pst file name in it
 num_simnams=0
@@ -81,7 +106,8 @@ for lyr in lyrList:
         arcpy.mapping.Layer.replaceDataSource(lyr,gdb,"FILEGDB_WORKSPACE",simnam+"_ppkx1_feet")
 print "updating "+mxdname
 arcpy.mapping.ExportToJPEG(mxd, dir_figs+'/'+mxdname[:-3]+'jpg', resolution=300)
-mxd.saveACopy(cpath_py+'/'+mxdname, ARCFILEVERSION)
+#mxd.saveACopy(cpath_py+'/'+mxdname, ARCFILEVERSION)
+mxd.saveACopy( (dir_GIS + '/' + mxdname), ARCFILEVERSION)
 
 mxdname = 'CPR_Map70_DistributionHHC_PP_Model_L3.mxd'
 mxd = arcpy.mapping.MapDocument(TEMPLATEDIR + mxdname)
@@ -92,7 +118,8 @@ for lyr in lyrList:
         arcpy.mapping.Layer.replaceDataSource(lyr,gdb,"FILEGDB_WORKSPACE",simnam+"_ppkx3_feet")
 print "updating "+mxdname
 arcpy.mapping.ExportToJPEG(mxd, dir_figs+'/'+mxdname[:-3]+'jpg', resolution=300)
-mxd.saveACopy(cpath_py+'/'+mxdname, ARCFILEVERSION)
+#mxd.saveACopy(cpath_py+'/'+mxdname, ARCFILEVERSION)
+mxd.saveACopy( (dir_GIS + '/' + mxdname), ARCFILEVERSION)
 
 mxdname = 'CPR_Map71_DistributionHHC_PP_Model_L7.mxd'
 mxd = arcpy.mapping.MapDocument(TEMPLATEDIR + mxdname)
@@ -103,7 +130,8 @@ for lyr in lyrList:
         arcpy.mapping.Layer.replaceDataSource(lyr,gdb,"FILEGDB_WORKSPACE",simnam+"_ppkx7_feet")
 print "updating "+mxdname
 arcpy.mapping.ExportToJPEG(mxd, dir_figs+'/'+mxdname[:-3]+'jpg', resolution=300)
-mxd.saveACopy(cpath_py+'/'+mxdname, ARCFILEVERSION)
+#mxd.saveACopy(cpath_py+'/'+mxdname, ARCFILEVERSION)
+mxd.saveACopy( (dir_GIS + '/' + mxdname), ARCFILEVERSION)
 
 mxdname = 'CPR_Map72_DistributionVHC_PP_Model_L6.mxd'
 mxd = arcpy.mapping.MapDocument(TEMPLATEDIR + mxdname)
@@ -114,7 +142,8 @@ for lyr in lyrList:
         arcpy.mapping.Layer.replaceDataSource(lyr,gdb,"FILEGDB_WORKSPACE",simnam+"_ppkz6_feet")
 print "updating "+mxdname
 arcpy.mapping.ExportToJPEG(mxd, dir_figs+'/'+mxdname[:-3]+'jpg', resolution=300)
-mxd.saveACopy(cpath_py+'/'+mxdname, ARCFILEVERSION)
+#mxd.saveACopy(cpath_py+'/'+mxdname, ARCFILEVERSION)
+mxd.saveACopy( (dir_GIS + '/' + mxdname), ARCFILEVERSION)
 
 mxdname = 'CPR_Map73_DistributionVHC_PP_and_VHC_PP_and_VHC_Multiplier_PP_Model_L2.mxd'
 mxd = arcpy.mapping.MapDocument(TEMPLATEDIR + mxdname)
@@ -125,7 +154,8 @@ for lyr in lyrList:
         arcpy.mapping.Layer.replaceDataSource(lyr,gdb,"FILEGDB_WORKSPACE",simnam+"_ppkz2_feet")
 print "updating "+mxdname
 arcpy.mapping.ExportToJPEG(mxd, dir_figs+'/'+mxdname[:-3]+'jpg', resolution=300)
-mxd.saveACopy(cpath_py+'/'+mxdname, ARCFILEVERSION)
+#mxd.saveACopy(cpath_py+'/'+mxdname, ARCFILEVERSION)
+mxd.saveACopy( (dir_GIS + '/' + mxdname), ARCFILEVERSION)
 
 mxdname = 'CPR_Map74_DistributionVHC_PP_and_VHC_PP_and_VHC_Multiplier_PP_Model_L4.mxd'
 mxd = arcpy.mapping.MapDocument(TEMPLATEDIR + mxdname)
@@ -136,7 +166,8 @@ for lyr in lyrList:
         arcpy.mapping.Layer.replaceDataSource(lyr,gdb,"FILEGDB_WORKSPACE",simnam+"_ppkz4_feet")
 print "updating "+mxdname
 arcpy.mapping.ExportToJPEG(mxd, dir_figs+'/'+mxdname[:-3]+'jpg', resolution=300)
-mxd.saveACopy(cpath_py+'/'+mxdname, ARCFILEVERSION)
+#mxd.saveACopy(cpath_py+'/'+mxdname, ARCFILEVERSION)
+mxd.saveACopy( (dir_GIS + '/' + mxdname), ARCFILEVERSION)
 
 mxdname = "CPR_Map75_DistributionVHC_PP_and_VHC_Multiplier_PP_Model_L5.mxd"
 mxd = arcpy.mapping.MapDocument(TEMPLATEDIR + mxdname)
@@ -147,4 +178,5 @@ for lyr in lyrList:
         arcpy.mapping.Layer.replaceDataSource(lyr,gdb,"FILEGDB_WORKSPACE",simnam+"_ppkx5_feet")
 print "updating "+mxdname
 arcpy.mapping.ExportToJPEG(mxd, dir_figs+'/'+mxdname[:-3]+'jpg', resolution=300)
-mxd.saveACopy(cpath_py+'/'+mxdname, ARCFILEVERSION)
+#mxd.saveACopy(cpath_py+'/'+mxdname, ARCFILEVERSION)
+mxd.saveACopy( (dir_GIS + '/' + mxdname), ARCFILEVERSION)
