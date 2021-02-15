@@ -94,9 +94,21 @@ def get_current_PATHs():
     ##cpath_py_base="T:/NFSEGv1_1"
     #
     # New Version:
-    CurWorkingDir='/'.join(os.getcwd().split('\\'))
-    ParentDir='/'.join(os.getcwd().split('\\')[:-1])
-    GrandparentDir='/'.join(os.getcwd().split('\\')[:-2])
+    #CurWorkingDir='/'.join(os.getcwd().split('\\'))
+    #ParentDir='/'.join(os.getcwd().split('\\')[:-1])
+    #GrandparentDir='/'.join(os.getcwd().split('\\')[:-2])
+    CurWorkingDir=os.getcwd()
+    if (CurWorkingDir[-1]=='\\' or CurWorkingDir=='/'):
+        # First time gets rid of the trailing slashes
+        ParentDir=os.path.dirname(CurWorkingDir)
+        
+        # Second time finally strips off the last directory name in the PATH
+        ParentDir=os.path.dirname(ParentDir)
+    else:
+        # No trailing slashes -- first time gives the parent directory
+        ParentDir=os.path.dirname(CurWorkingDir)
+    #
+    GrandparentDir=os.path.dirname(ParentDir)
     
     return CurWorkingDir, ParentDir, GrandparentDir
 # ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -131,7 +143,7 @@ def get_current_PATHs():
 #                    period will be inserted if it is missing.
 #
 # Output:
-#   - foundfile = the base of the simulation filename
+#   - foundfile = the stem of the unique filename
 #
 #
 # Last Modified: 20190722 PMBremner
@@ -161,9 +173,11 @@ def get_unique_filebasename_from_suffix(searchdir, suffix):
     
     # Check if a unique file was found
     if num_foundfiles==0:
-        raise Exception('I am deeply sorry, but no files were found with the suffix: {}'.format(suffix))
+        errmsg = ('ERROR\nCould not find a file in the model directory with the suffix: {}\nCopy appropriate files to the model directory and re-run the post-process routine.\n'.format(suffix))
+        raise Exception(errmsg)
     elif num_foundfiles>1:
-        raise Exception("Don't know what to do! Multiple files were found with the suffix: {}".format(suffix))
+        errmsg = ("ERROR\nDon't know what to do! Multiple files were found in the model directory with the suffix: {}\n".format(suffix))
+        raise Exception(errmsg)
     # END if
 #    else:
 #        print("sim name:"+str(foundfile))
