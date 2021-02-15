@@ -3,8 +3,7 @@
 #   Collection of functions utilized within
 #   multiple scripts within the NFSEG series.
 #
-#   Written: 20190719 PMBremner
-#   Last Modified: 20190826 PMBremner
+#   Originally Written: 20190719 PMBremner
 #
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -17,9 +16,6 @@ import os
 # A General Class to set global user defined values
 # and reference values.
 # 
-#
-# Last Modified: 20190826 PMBremner
-#
 # xoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxox
 class ReferenceDefinitions:
     def __init__(self):
@@ -60,8 +56,6 @@ class ReferenceDefinitions:
 #   - the parent directory
 #   - the parent to the parent (grandparent) directory
 #
-# Last Modified: 20190722 PMBremner
-#
 # xoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxox
 def get_current_PATHs():
     # Capture commandline input:
@@ -94,9 +88,6 @@ def get_current_PATHs():
     ##cpath_py_base="T:/NFSEGv1_1"
     #
     # New Version:
-    #CurWorkingDir='/'.join(os.getcwd().split('\\'))
-    #ParentDir='/'.join(os.getcwd().split('\\')[:-1])
-    #GrandparentDir='/'.join(os.getcwd().split('\\')[:-2])
     CurWorkingDir=os.getcwd()
     if (CurWorkingDir[-1]=='\\' or CurWorkingDir=='/'):
         # First time gets rid of the trailing slashes
@@ -145,8 +136,6 @@ def get_current_PATHs():
 # Output:
 #   - foundfile = the stem of the unique filename
 #
-#
-# Last Modified: 20190722 PMBremner
 #
 # xoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxox
 def get_unique_filebasename_from_suffix(searchdir, suffix):
@@ -197,9 +186,6 @@ def get_unique_filebasename_from_suffix(searchdir, suffix):
 #
 # Output:
 #   - boolean True (value is a number) or False (not a number)
-#
-#
-# Last Modified: 20190724 PMBremner
 #
 # xoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxox
 def is_number(s):
