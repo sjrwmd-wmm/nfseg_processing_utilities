@@ -236,7 +236,7 @@ for mapname in maps_HH:
     for lyr in lyrList:
         if lyr.name[:5]=="Water":
             print ("updating layer {}".format(lyr.name))
-            arcpy.mapping.Layer.replaceDataSource(lyr, gdb, "FILEGDB_WORKSPACE", simnam+"_WL_targets_20"+yy)
+            arcpy.mapping.Layer.replaceDataSource(lyr, gdb, "FILEGDB_WORKSPACE", simnam+"_WL_targets_"+yy)
     arcpy.mapping.ExportToJPEG(mxd, os.path.join(dir_figs, (mapname+'.jpg')), resolution=300)
     mxd.saveACopy(os.path.join(dir_GIS, mxdname), ARCFILEVERSION)
 
@@ -252,10 +252,10 @@ for mxdname in maps_VHD_L1L3:
     for lyr in lyrList:
         if lyr.name[:3]=="VHD":
             print ("updating layer {}".format(lyr.name))
-            arcpy.mapping.Layer.replaceDataSource(lyr, gdb, "FILEGDB_WORKSPACE", simnam+"_VHD_L1L3_targets_20"+yy)
+            arcpy.mapping.Layer.replaceDataSource(lyr, gdb, "FILEGDB_WORKSPACE", simnam+"_VHD_L1L3_targets_"+yy)
         elif lyr.name[:8]=="Residual":
             print ("updating layer {}".format(lyr.name))
-            arcpy.mapping.Layer.replaceDataSource(lyr, gdb, "FILEGDB_WORKSPACE", simnam+"_VHD_L1L3_targets_20"+yy)
+            arcpy.mapping.Layer.replaceDataSource(lyr, gdb, "FILEGDB_WORKSPACE", simnam+"_VHD_L1L3_targets_"+yy)
     arcpy.mapping.ExportToJPEG(mxd, os.path.join(dir_figs, (mapname+'.jpg')), resolution=300)
     mxd.saveACopy(os.path.join(dir_GIS, mxdname), ARCFILEVERSION)
 
@@ -271,10 +271,10 @@ for mxdname in maps_VHD_L3L5:
     for lyr in lyrList:
         if lyr.name[:3]=="VHD":
             print ("updating layer {}".format(lyr.name))
-            arcpy.mapping.Layer.replaceDataSource(lyr, gdb, "FILEGDB_WORKSPACE", simnam+"_VHD_L3L5_targets_20"+yy)
+            arcpy.mapping.Layer.replaceDataSource(lyr, gdb, "FILEGDB_WORKSPACE", simnam+"_VHD_L3L5_targets_"+yy)
         elif lyr.name[:8]=="Residual":
             print ("updating layer {}".format(lyr.name))
-            arcpy.mapping.Layer.replaceDataSource(lyr, gdb, "FILEGDB_WORKSPACE", simnam+"_VHD_L3L5_targets_20"+yy)
+            arcpy.mapping.Layer.replaceDataSource(lyr, gdb, "FILEGDB_WORKSPACE", simnam+"_VHD_L3L5_targets_"+yy)
     arcpy.mapping.ExportToJPEG(mxd, os.path.join(dir_figs, (mapname+'.jpg')), resolution=300)
     mxd.saveACopy(os.path.join(dir_GIS, mxdname), ARCFILEVERSION)
 
