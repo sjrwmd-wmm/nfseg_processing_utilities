@@ -71,7 +71,7 @@ simnam = myut.get_unique_filebasename_from_suffix(cpath_py_upper,'.pst')
 print("sim name: {}".format(simnam))
 
 
-gdb=cpath_py+"/"+simnam+".gdb"
+gdb = os.path.join(cpath_py, simnam+".gdb")
 if arcpy.Exists(gdb):
     print("geodatabase for this sim exists - continuing ")
     #arcpy.Delete_management(gdb)#temp action for debugging
