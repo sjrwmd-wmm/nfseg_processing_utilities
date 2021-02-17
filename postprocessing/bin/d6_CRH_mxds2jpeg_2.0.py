@@ -135,91 +135,7 @@ for prop in properties:
             arcpy.mapping.Layer.replaceDataSource(lyr, gdb, "FILEGDB_WORKSPACE", prop[2][1])
     arcpy.mapping.ExportToJPEG(mxd, os.path.join(dir_figs, (prop[0]+'.jpg')), resolution=300)
     mxd.saveACopy(os.path.join(dir_GIS, mxdname), ARCFILEVERSION)
-# !!!
 
-#mxdname = 'CRH_Map78_Simulated_POT_SurfaceModel_L3_2001.mxd'
-#mxd = arcpy.mapping.MapDocument(TEMPLATEDIR + mxdname)
-#lyrList = arcpy.mapping.ListLayers(mxd)
-#for lyr in lyrList:
-#    if lyr.name=="Sim Pot Surface L3 -Index Contour (50ft)":
-#        print ("updating layer:" + lyr.name)
-#        arcpy.mapping.Layer.replaceDataSource(lyr,gdb,"FILEGDB_WORKSPACE","ref_HDS_L03SP1TS1_cont50ft")
-#    elif lyr.name=="Sim Pot Surface L3 - Contour 5 ft Interval":
-#        print "updating layer:"+lyr.name
-#        arcpy.mapping.Layer.replaceDataSource(lyr,gdb,"FILEGDB_WORKSPACE","ref_HDS_L03SP1TS1_cont5ft")
-#print "updating "+mxdname
-#arcpy.mapping.ExportToJPEG(mxd, dir_figs+'/'+mxdname[:-3]+'jpg', resolution=300)
-#mxd.saveACopy(cpath_py+'/'+mxdname, ARCFILEVERSION)
-#
-#mxdname = 'CRH_Map79_Simulated_POT_SurfaceModel_L3_2009.mxd'
-#mxd = arcpy.mapping.MapDocument(TEMPLATEDIR + mxdname)
-#lyrList = arcpy.mapping.ListLayers(mxd)
-#for lyr in lyrList:
-#    if lyr.name=="Sim Pot Surface L3 -Index Contour (50ft)":
-#        print "updating layer:"+lyr.name
-#        arcpy.mapping.Layer.replaceDataSource(lyr,gdb,"FILEGDB_WORKSPACE","ref_HDS_L03SP2TS1_cont50ft")
-#    elif lyr.name=="Sim Pot Surface L3 - Contour 5 ft Interval":
-#        print "updating layer:"+lyr.name
-#        arcpy.mapping.Layer.replaceDataSource(lyr,gdb,"FILEGDB_WORKSPACE","ref_HDS_L03SP2TS1_cont5ft")
-#print "updating "+mxdname
-#arcpy.mapping.ExportToJPEG(mxd, dir_figs+'/'+mxdname[:-3]+'jpg', resolution=300)
-#mxd.saveACopy(cpath_py+'/'+mxdname, ARCFILEVERSION)
-#
-#mxdname = "CRH_Map80_Simulated_WT_L1_2001.mxd"
-#mxd = arcpy.mapping.MapDocument(TEMPLATEDIR + mxdname)
-#lyrList = arcpy.mapping.ListLayers(mxd)
-#for lyr in lyrList:
-#    if lyr.name=="Sim Water Surface L1 -Index Contour (50ft)":
-#        print "updating layer:"+lyr.name
-#        arcpy.mapping.Layer.replaceDataSource(lyr,gdb,"FILEGDB_WORKSPACE","ref_HDS_L01SP1TS1_cont50ft")
-#    elif lyr.name=="Sim Water Surface L1 - Contour 5 ft Interval":
-#        print "updating layer:"+lyr.name
-#        arcpy.mapping.Layer.replaceDataSource(lyr,gdb,"FILEGDB_WORKSPACE","ref_HDS_L01SP1TS1_cont5ft")
-#print "updating "+mxdname
-#arcpy.mapping.ExportToJPEG(mxd, dir_figs+'/'+mxdname[:-3]+'jpg', resolution=300)
-#mxd.saveACopy(cpath_py+'/'+mxdname, ARCFILEVERSION)
-#
-#mxdname = "CRH_Map81_Simulated_WT_L1_2009.mxd"
-#mxd = arcpy.mapping.MapDocument(TEMPLATEDIR + mxdname)
-#lyrList = arcpy.mapping.ListLayers(mxd)
-#for lyr in lyrList:
-#    if lyr.name=="Sim Water Surface L1 -Index Contour (50ft)":
-#        print "updating layer:"+lyr.name
-#        arcpy.mapping.Layer.replaceDataSource(lyr,gdb,"FILEGDB_WORKSPACE","ref_HDS_L01SP2TS1_cont50ft")
-#    elif lyr.name=="Sim Water Surface L1 - Contour 5 ft Interval":
-#        print "updating layer:"+lyr.name
-#        arcpy.mapping.Layer.replaceDataSource(lyr,gdb,"FILEGDB_WORKSPACE","ref_HDS_L01SP2TS1_cont5ft")
-#print "updating "+mxdname
-#arcpy.mapping.ExportToJPEG(mxd, dir_figs+'/'+mxdname[:-3]+'jpg', resolution=300)
-#mxd.saveACopy(cpath_py+'/'+mxdname, ARCFILEVERSION)
-#
-#mxdname = "CRH_Map82_Simulated_POT_Surface_Model_L5_2001.mxd"
-#mxd = arcpy.mapping.MapDocument(TEMPLATEDIR + mxdname)
-#lyrList = arcpy.mapping.ListLayers(mxd)
-#for lyr in lyrList:
-#    if lyr.name=="Sim Water Surface L5 -Index Contour (50ft)":
-#        print "updating layer:"+lyr.name
-#        arcpy.mapping.Layer.replaceDataSource(lyr,gdb,"FILEGDB_WORKSPACE","ref_HDS_L05SP1TS1_cont50ft")
-#    elif lyr.name=="Sim Water Surface L5 - Contour 5 ft Interval":
-#        print "updating layer:"+lyr.name
-#        arcpy.mapping.Layer.replaceDataSource(lyr,gdb,"FILEGDB_WORKSPACE","ref_HDS_L05SP1TS1_cont5ft")
-#print "updating "+mxdname
-#arcpy.mapping.ExportToJPEG(mxd, dir_figs+'/'+mxdname[:-3]+'jpg', resolution=300)
-#mxd.saveACopy(cpath_py+'/'+mxdname, ARCFILEVERSION)
-#
-#mxdname = "CRH_Map83_Simulated_POT_Surface_Model_L5_2009.mxd"
-#mxd = arcpy.mapping.MapDocument(TEMPLATEDIR + mxdname)
-#lyrList = arcpy.mapping.ListLayers(mxd)
-#for lyr in lyrList:
-#    if lyr.name=="Sim Water Surface L5 -Index Contour (50ft)":
-#        print "updating layer:"+lyr.name
-#        arcpy.mapping.Layer.replaceDataSource(lyr,gdb,"FILEGDB_WORKSPACE","ref_HDS_L05SP2TS1_cont50ft")
-#    elif lyr.name=="Sim Water Surface L5 - Contour 5 ft Interval":
-#        print "updating layer:"+lyr.name
-#        arcpy.mapping.Layer.replaceDataSource(lyr,gdb,"FILEGDB_WORKSPACE","ref_HDS_L05SP2TS1_cont5ft")
-#print "updating "+mxdname
-#arcpy.mapping.ExportToJPEG(mxd, dir_figs+'/'+mxdname[:-3]+'jpg', resolution=300)
-#mxd.saveACopy(cpath_py+'/'+mxdname, ARCFILEVERSION)
 
 maps_HH = ["CRH_Map84_ResidualsHH_Feet_Model_L1_2001",
           "CRH_Map89_ResidualsHH_Feet_Model_L5_2009",
@@ -243,7 +159,7 @@ for mapname in maps_HH:
 
 maps_VHD_L1L3 = ["CRH_Map97_ResidualsVHD_Feet_Model_Layers_1_and_3_2001",
              "CRH_Map98_ResidualsVHD_Feet_Model_Layers_1_and_3_2009"]
-for mxdname in maps_VHD_L1L3:
+for mapname in maps_VHD_L1L3:
     mxdname = (mapname + '.mxd')
     mxd = arcpy.mapping.MapDocument(TEMPLATEDIR + mxdname)
     print ("updating {}".format(mxdname))
@@ -262,7 +178,7 @@ for mxdname in maps_VHD_L1L3:
 
 maps_VHD_L3L5 = ["CRH_Map100_ResidualsVHD_Feet_Model_Layers_3_and_5_2009",
              "CRH_Map99_ResidualsVHD_Feet_Model_Layers_3_and_5_2001"]
-for mxdname in maps_VHD_L3L5:
+for mapname in maps_VHD_L3L5:
     mxdname = (mapname + '.mxd')
     mxd = arcpy.mapping.MapDocument(TEMPLATEDIR + mxdname)
     print ("updating {}".format(mxdname))
@@ -281,7 +197,7 @@ for mxdname in maps_VHD_L3L5:
 
 maps_HHDs = ["CRH_Map106_ResidualsHHD_Feet_Model_L3_2009",
              "CRH_Map105_ResidualsHHD_Feet_Model_L3_2001"]
-for mxdname in maps_HHDs:
+for mapname in maps_HHDs:
     mxdname = (mapname + '.mxd')
     mxd = arcpy.mapping.MapDocument(TEMPLATEDIR + mxdname)
     print ("updating {}".format(mxdname))
@@ -301,7 +217,7 @@ for mxdname in maps_HHDs:
 maps_fld = ["CRH_Map144_HeightSimWT_above_LS_FT_2001",
             "CRH_Map145_HeightSimWT_above_LS_FT_2009",
             "CRH_Map146_Difference_HeightSim_WT_above_LS_FT_Pumps-Off_to2009"]
-for mxdname in maps_fld:
+for mapname in maps_fld:
     mxdname = (mapname + '.mxd')
     mxd = arcpy.mapping.MapDocument(TEMPLATEDIR + mxdname)
     print ("updating {}".format(mxdname))
