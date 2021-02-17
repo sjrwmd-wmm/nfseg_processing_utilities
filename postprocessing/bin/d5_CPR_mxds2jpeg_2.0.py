@@ -74,7 +74,7 @@ print("sim name: {}".format(simnam))
 
 gdb = os.path.join(cpath_py, (simnam + '.gdb') )
 if arcpy.Exists(gdb):
-    print('geodatabase for this sim exists - continuing')
+    print('geodatabase for this sim exists - continuing\n')
     #arcpy.Delete_management(gdb)#temp action for debugging
     #arcpy.CreateFileGDB_management(dir_sim_proc,simnam,"CURRENT")
     #exit()

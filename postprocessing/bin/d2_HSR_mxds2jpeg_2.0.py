@@ -6,9 +6,6 @@ import sys
 
 BIN_DIR = os.path.dirname(os.path.realpath(__file__))
 sys.path.insert(0,BIN_DIR)
-#PATH = (os.getcwd() + "\\" + "bin")
-#sys.path.insert(0,PATH)
-
 import my_utilities_NFSEG as myut
 
 
@@ -28,6 +25,12 @@ TEMPLATEDIR = MyDef.GisTemplateDIR
 print("Exporting jpeg maps related to Hydrostratigraphic Related(HSR): L1 thru L7 Elevations and Thickness, Elevation FWSW TDS 10,000ppm.")
 
 
+# xoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxox
+#
+# Setup PATHs and filenames
+#
+# xoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxox
+
 # Get the working PATHs
 cpath_py, cpath_py_upper, cpath_py_base = myut.get_current_PATHs()
 
@@ -40,20 +43,19 @@ print("grandparent directory: " + str(cpath_py_base))
 #-------------------------------------------
 
 # Sub-directory called /figures
-dir_figs = (str(cpath_py) + "/figures")
-if os.path.exists(dir_figs) == False:
+dir_figs = os.path.join(cpath_py, "figures")
+if not os.path.exists(dir_figs):
     os.makedirs(dir_figs)
 else:
     print('\nWARNING: subdirectory "figures" already exists - \n' +
           '\t existing files with the same name as those updated ' +
           'in this script will be overwritten!\n')
 # END IF
-#print("root directory for figures output: "+str(dir_XS))
 
 
 # Sub-directory called /GIS
-dir_GIS = (str(cpath_py) + "/GIS")
-if os.path.exists(dir_GIS) == False:
+dir_GIS = os.path.join(cpath_py, "GIS")
+if not os.path.exists(dir_GIS):
     os.makedirs(dir_GIS)
 else:
     print('\nWARNING: subdirectory "GIS" already exists - \n' +
@@ -69,19 +71,26 @@ simnam = myut.get_unique_filebasename_from_suffix(cpath_py_upper,'.pst')
 print("sim name: " + str(simnam))
 
 
-gdb = (cpath_py + "/" + simnam + ".gdb")
+gdb = os.path.join(cpath_py, simnam + ".gdb")
 if arcpy.Exists(gdb):
-    print("geodatabase for this sim exists - continuing\n")
+    print('geodatabase for this sim exists - continuing\n')
     #arcpy.Delete_management(gdb)#temp action for debugging
     #arcpy.CreateFileGDB_management(dir_sim_proc,simnam,"CURRENT")
     #exit()
 else:
     #arcpy.CreateFileGDB_management(cpath_py,simnam+"_ZB", ARCFILEVERSION)
-    raise Exception('geodatabase for this sim does not exist - stopping - run earlier scripts')
-    #print("geodatabase for this sim does not exist - stopping - run earlier scripts")
-    #exit()
+    errmsg = 'ERROR: geodatabase for this sim does not exist - stopping - run earlier scripts'
+    raise Exception(errmsg)
 # END IF
+# ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
+
+
+# xoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxox
+#
+# Create Maps
+#
+# xoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxox
 
 #automatic figures right from the templates_gdb - no updates
 mxdnames = ["HSR_Map3_Elevation_TDSConcentration_Iso-Surface.mxd",
@@ -97,7 +106,7 @@ for mxdname in mxdnames:
     print("Creating " + mxdname)
     mxd = arcpy.mapping.MapDocument(TEMPLATEDIR + mxdname)
     arcpy.mapping.ExportToJPEG(mxd, (dir_figs + '/' + mxdname[:-3] + 'jpg'), resolution=300)
-    mxd.saveACopy( (dir_GIS + '/' + mxdname), ARCFILEVERSION)
+    mxd.saveACopy(os.path.join(dir_GIS, mxdname), ARCFILEVERSION)
 
 
 
@@ -147,6 +156,5 @@ for i in range(len(MapFigures)):
     # End for loop over lyr
     
     arcpy.mapping.ExportToJPEG(mxd, (dir_figs + '/' + cur_mxdname[:-3] + 'jpg'), resolution=300)
-    
-    mxd.saveACopy( (dir_GIS + '/' + cur_mxdname), ARCFILEVERSION)
+    mxd.saveACopy(os.path.join(dir_GIS, mxdname), ARCFILEVERSION)
 #------------------------------
